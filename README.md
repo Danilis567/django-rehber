@@ -1,6 +1,4 @@
-Django, Python tabanlı bir web framework'üdür ve hızlı bir şekilde güçlü web uygulamaları geliştirmenizi sağlar. Django projenizi başlatmak ve temel dosya yapısını anlatan bir makale şu başlıkları içerebilir:
-
-1\. Giriş
+# 1\. Giriş
 ---------
 
 \- Django nedir?

@@ -1,4 +1,6 @@
-# 1\. Giriş
+# Temel Django rehberi
+
+1\. Giriş
 ---------
 
 \- Django nedir?

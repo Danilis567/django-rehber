@@ -253,7 +253,7 @@ Django, veritabanı bağlantısı ve yönetimi için güçlü bir araç olan Dja
 
 Django projenizdeki veritabanı bağlantısını yapılandırmak için `settings.py` dosyasını kullanırsınız. Bu dosyada `DATABASES` ayarı altında veritabanı bağlantısı tanımlanır. Aşağıda, `settings.py` dosyasındaki tipik veritabanı ayarlarını görüyorsunuz
 
-```
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',  # Veritabanı motoru

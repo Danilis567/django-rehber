@@ -658,7 +658,7 @@ Yukarıdaki örnekte, `sehirler` adlı bir liste döngüsü ile dolaşılır ve 
 
 Django şablonları, web uygulamanızın kullanıcı arayüzünü dinamikleştirmek ve verileri görüntülemek için güçlü bir araçtır. Şablonlar, veritabanından gelen verileri veya kullanıcı girişi gibi dinamik bilgileri HTML belgesine entegre etmek için kullanılır.
 
-13\. Admin Paneli
+10\. Admin Paneli
 -----------------
 
 \- Django admin panelini özelleştirme ve kullanma
@@ -722,11 +722,12 @@ Bu özelleştirmeler, admin panelinin görünümünü ve işlevselliğini projen
 
 Django admin paneli, projenizin veritabanı yönetimi ve içerik oluşturma için kullanışlı bir araçtır. Özelleştirme seçenekleri sayesinde, paneli projenizin gereksinimlerine göre uyarlayabilirsiniz.
 
-14\. Projeyi Çalıştırma
+12\. Projeyi Çalıştırma
 -----------------------
 
 \- Django geliştirme sunucusunu başlatma: \`python manage.py runserver\`
+bunu sonda vermek biraz garip oldu 😸
 
-### 15\. Kaynaklar
+### 13\. Kaynaklar
 
 \- [Kaynak linki](https://www.djangoproject.com/start/ "https://www.djangoproject.com/start/")

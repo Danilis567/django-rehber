@@ -58,7 +58,7 @@ Django, büyük ölçekli ve karmaşık web uygulamaları geliştirmek için gü
 
 Django başarıyla kurulduğunda, web uygulamaları geliştirmeye başlamak için hazırsınız demektir. Django'nun güçlü yeteneklerinden ve ayrıntılı dökümantasyonundan yararlanarak web projelerinizi oluşturabilir ve yönetebilirsiniz. Kurulum tamamlandıktan sonra, `django-admin` veya `django-admin.py` kullanarak Django komutlarını kullanabilirsiniz. Örneğin, yeni bir Django projesi oluşturmak için `django-admin startproject myproject` komutunu kullanabilirsiniz. Projenizi oluşturduktan sonra, web uygulamanızı geliştirmeye başlamak için Django belgelerini incelemek iyi bir başlangıç olacaktır.
 
-5\. Temel Dosya Yapısı
+3\. Temel Dosya Yapısı
 ----------------------
 
 \- Django projesinin ana dizini
@@ -106,7 +106,7 @@ Django başarıyla kurulduğunda, web uygulamaları geliştirmeye başlamak içi
 
 Django'nun temel dosya yapısı, projenizin temel bileşenlerini düzenler ve projenizi kolayca yönetmenize yardımcı olur. Bu dosyaları düzgün bir şekilde yapılandırarak, Django ile web projelerinizi geliştirmeye başlayabilirsiniz. Proje geliştikçe, bu dosyaların içeriğini özelleştirmeniz ve yeni uygulamalar eklemeniz gerekecektir.
 
-6\. Uygulama Oluşturma
+4\. Uygulama Oluşturma
 ----------------------
 
 \- Django uygulamaları hakkında genel bilgi
@@ -170,7 +170,7 @@ Django uygulamaları, bir Django projesinin modüler bileşenleridir ve proje i�
 
 Bu adımları takip ederek yeni bir Django uygulaması oluşturabilir ve projenize ekleyebilirsiniz. Uygulama içinde veritabanı modelleri tanımlayabilir, görünümler ve şablonlar oluşturabilir ve projenizin farklı bölümlerini düzenleyebilirsiniz.
 
-7\. Temel Dosya Yapısı (Uygulama Seviyesi)
+5\. Temel Dosya Yapısı (Uygulama Seviyesi)
 ------------------------------------------
 
 \- Uygulama dizinleri
@@ -236,7 +236,7 @@ Django uygulamaları, her uygulamanın kendi işlevselliğini düzenlediği ve p
 
 Bu temel dosya yapısı, bir Django uygulamasının organizasyonunu ve işlevselliğini düzenler. Her uygulama, projenin bir parçası olarak projenin ana dizinine eklenir ve projenin daha büyük bir bütün olarak yönetilmesine olanak tanır. Uygulamalar, farklı işlevselliği ve bileşenleri kolayca tanımlamanıza ve gruplandırmanıza yardımcı olur.
 
-8.Veritabanı Ayarları
+6.Veritabanı Ayarları
 ---------------------
 
 \- Veritabanı bağlantısı yapılandırma
@@ -312,7 +312,7 @@ author.delete()
 
 Django ORM, veritabanı işlemlerini Python nesneleri ve sorguları ile yapmanıza olanak tanır ve veritabanı bağlantısı için yapılandırma işlemlerini `settings.py` dosyası içinde kolayca yapabilirsiniz. Bu, veritabanı işlemlerini yönetmeyi daha kolay ve veritabanı bağlantısını esnek hale getirir.
 
-9\. URL Yönlendirmeleri
+7\. URL Yönlendirmeleri
 -----------------------
 
 \- URL yönlendirmeleri ve \`urls.py\` kullanımı
@@ -368,7 +368,7 @@ urlpatterns = [
 
 Django, URL yönlendirmelerini tanımlarken çeşitli özel dize düzenlemeleri ve parametre yakalama yöntemleri sunar. Bu, web uygulamanızın URL'lerini özelleştirmenize ve istediğiniz dinamik verilere erişmenize olanak tanır.
 
-10\. Görünümler (Views)
+8\. Görünümler (Views)
 -----------------------
 
 \- Görünüm fonksiyonları oluşturma
@@ -411,7 +411,7 @@ Yukarıdaki örnekte, "greet\_user" adlı bir görünüm fonksiyonu tanımlanmı
 
 Django, HTTP isteklerini işlemek ve HTTP cevapları oluşturmak için birçok farklı nesne ve araç sunar. Görünüm fonksiyonları, web uygulamanızın işlevselliğini ve kullanıcı arayüzünü kontrol etmek için önemli bir rol oynar.
 
-11\. HTML Şablonları
+9\. HTML Şablonları
 --------------------
 
 \- Django şablonları ve HTML kullanımı

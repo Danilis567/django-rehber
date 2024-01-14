@@ -46,17 +46,14 @@ Django, büyük ölçekli ve karmaşık web uygulamaları geliştirmek için gü
     
 3.  **Django Kurulumu:**
     
-    *   Pip'i kullanarak Django'yu kurabilirsiniz. Komut satırında aşağıdaki komutu çalıştırarak en son Django sürümünü kurun:`pip install django   `
+    *   Pip'i kullanarak Django'yu kurabilirsiniz. Komut satırında aşağıdaki komutu çalıştırarak en son Django sürümünü kurun:`pip install django`
         
     
     Bu komut, Django'nun en son sürümünü Python ortamınıza indirecek ve kuracaktır.
     
 4.  **Kurulumu Doğrulama:**
     
-    *   Django'nun başarıyla kurulup kurulmadığını doğrulamak için aşağıdaki komutu kullanabilirsiniz:`django-admin --version`
-        
-    
-    Bu komut, Django'nun sürümünü göstermelidir.
+    *   Django'nun başarıyla kurulup kurulmadığını doğrulamak için aşağıdaki komutu kullanabilirsiniz:`django-admin --version` Bu komut, Django'nun sürümünü göstermelidir.
     
 
 Django başarıyla kurulduğunda, web uygulamaları geliştirmeye başlamak için hazırsınız demektir. Django'nun güçlü yeteneklerinden ve ayrıntılı dökümantasyonundan yararlanarak web projelerinizi oluşturabilir ve yönetebilirsiniz. Kurulum tamamlandıktan sonra, `django-admin` veya `django-admin.py` kullanarak Django komutlarını kullanabilirsiniz. Örneğin, yeni bir Django projesi oluşturmak için `django-admin startproject myproject` komutunu kullanabilirsiniz. Projenizi oluşturduktan sonra, web uygulamanızı geliştirmeye başlamak için Django belgelerini incelemek iyi bir başlangıç olacaktır.
@@ -132,7 +129,7 @@ Django uygulamaları, bir Django projesinin modüler bileşenleridir ve proje i�
     
     *   Yeni bir Django uygulaması oluşturmak için aşağıdaki komutu kullanabilirsiniz. "myapp" kısmını oluşturmak istediğiniz uygulamanın adıyla değiştirin.
         
-    *   `python manage.py startapp myapp   `
+    *   `python manage.py startapp myapp`
         
     
 2.  **Uygulama Klasörü Oluşturulur:**
@@ -168,9 +165,8 @@ Django uygulamaları, bir Django projesinin modüler bileşenleridir ve proje i�
     
     *   Yeni oluşturulan uygulamayı Django projesine eklemek için, projenin ayar dosyası olan `settings.py` içindeki `INSTALLED_APPS` listesine uygulamanın adını eklemelisiniz.
         
-    *   `INSTALLED_APPS = [   # ...'myapp',   ]`
+    *   `INSTALLED_APPS = [# ...'myapp',]`
         
-    
 
 Bu adımları takip ederek yeni bir Django uygulaması oluşturabilir ve projenize ekleyebilirsiniz. Uygulama içinde veritabanı modelleri tanımlayabilir, görünümler ve şablonlar oluşturabilir ve projenizin farklı bölümlerini düzenleyebilirsiniz.
 
@@ -274,7 +270,7 @@ Django ORM, veritabanı işlemlerini Python nesneleri ve sorguları ile yönetme
 *   **Model Tanımlama:**  
     Django ORM'de veritabanı tablolarını Python sınıfları ile tanımlarsınız. Örnek bir model tanımı:
     
-```
+```python
 from django.db import models
     class Author(models.Model):
     name = models.CharField(max_length=100)
@@ -284,7 +280,7 @@ from django.db import models
 *   **Yeni Veri Ekleme:**  
     Yeni veri eklemek için modeli kullanabilirsiniz:
     
-```
+```python
 new_author = Author(name="J.K. Rowling",birth_date="1965-07-31")
 new_author.save()
 ```
@@ -292,14 +288,14 @@ new_author.save()
 *   **Veri Sorgulama:**  
     Veritabanından veri sorgulamak için Django ORM sorgularını kullanabilirsiniz:
     
-```
+```python
 authors = Author.objects.filter(name="J.K. Rowling")
 ```
     
 *   **Veri Güncelleme:**  
     Veritabanındaki verileri güncellemek için modeli kullanabilirsiniz:
     
-```
+```python
 author = Author.objects.get(name="J.K. Rowling")
 author.name = "Joanne Rowling"
 author.save()
@@ -308,7 +304,7 @@ author.save()
 *   **Veri Silme:**  
     Verileri silmek için Django ORM'yi kullanabilirsiniz:
 
-```
+```python
 author = Author.objects.get(name="Joanne Rowling")
 author.delete()
 ``` 
@@ -334,14 +330,14 @@ Django'da URL yönlendirmeleri, gelen HTTP isteklerini doğru görünümlere yö
 
 Örnek bir `urls.py` dosyası:
 
-```
+```python
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),         # Anasayfa
-    path('about/', views.about, name='about'),  # Hakkında sayfası
-    path('contact/', views.contact, name='contact'),  # İletişim sayfası
+    path('', views.home, name='home'),# Anasayfa
+    path('about/', views.about, name='about'),# Hakkında sayfası
+    path('contact/', views.contact, name='contact'),# İletişim sayfası
 ]
 
 ```
@@ -355,7 +351,7 @@ Django'da URL yönlendirmeleri, parametreli yolları destekler. Bu, dinamik veri
 
 Örnek parametreli URL yönlendirmesi:
 
-```
+```python
 from django.urls import path
 from . import views
 
@@ -385,7 +381,11 @@ Django'da görünümler (views), HTTP isteklerini alır, işler ve HTTP cevaplar
 
 Görünüm fonksiyonlarını oluşturmak için Django'da Python fonksiyonlarını kullanırsınız. Her görünüm fonksiyonu, bir veya daha fazla HTTP isteği türünü (GET, POST, vb.) işlemek için tanımlanır. İşte bir örnek görünüm fonksiyonu:
 
-`from django.http import HttpResponse      def home(request):   return HttpResponse("Ana Sayfa")   `
+```python
+from django.http import HttpResponse      
+    def home(request):   
+    return HttpResponse("Ana Sayfa")   
+```
 
 Yukarıdaki örnek, "home" adlı bir görünüm fonksiyonu tanımlar. Bu görünüm, gelen HTTP GET isteğini işler ve "Ana Sayfa" metinli bir HTTP yanıtı döndürür.
 
@@ -399,7 +399,7 @@ Yukarıdaki örnek, "home" adlı bir görünüm fonksiyonu tanımlar. Bu görün
     
 
 Örnek bir görünüm fonksiyonunda HTTP isteği ve cevabının kullanımı:
-```
+```python
 from django.http import HttpResponse
 
 def greet_user(request, user_name):
@@ -433,7 +433,7 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-```
+```django
 <!DOCTYPE html>
 <html>
 <head>
@@ -467,7 +467,7 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-```
+```django
 <ul>
     {% for sehir in sehirler %}   
         <li>{{ sehir }}</li>   
@@ -494,7 +494,7 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-```
+```django
 <!DOCTYPE html>
 <html>
 <head>
@@ -526,7 +526,7 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-```
+```django
 <ul>   
     {% for sehir in sehirler %}   
         <li>{{ sehir }}</li>   
@@ -551,7 +551,7 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-```
+```django
 <!DOCTYPE html>
 <html>
 <head>
@@ -586,7 +586,7 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-```
+```django
 <ul>
     {% for sehir in sehirler %}
         <li>{{ sehir }}</li>
@@ -611,7 +611,7 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-```
+```django
 <!DOCTYPE html>
 <html>
 <head>
@@ -646,7 +646,7 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-```
+```django
 <ul>   
     {% for sehir in sehirler %}   
         <li>{{ sehir }}</li>   
@@ -701,7 +701,7 @@ Django admin panelini özelleştirmek için aşağıdaki yöntemleri kullanabili
 
 Örnek `admin.py` dosyası özelleştirmeleri:
 
-```
+```python
 from django.contrib import admin
 from .models import MyModel
 

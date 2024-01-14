@@ -253,7 +253,14 @@ Django, veritabanı bağlantısı ve yönetimi için güçlü bir araç olan Dja
 
 Django projenizdeki veritabanı bağlantısını yapılandırmak için `settings.py` dosyasını kullanırsınız. Bu dosyada `DATABASES` ayarı altında veritabanı bağlantısı tanımlanır. Aşağıda, `settings.py` dosyasındaki tipik veritabanı ayarlarını görüyorsunuz
 
-`DATABASES = {   'default': {   'ENGINE': 'django.db.backends.sqlite3', # Veritabanı motoru'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), # Veritabanı dosyasının yolu   }   }   `
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # Veritabanı motoru
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Veritabanı dosyasının yolu
+    }
+}
+```
 
 *   `'ENGINE'`: Kullanmak istediğiniz veritabanı motorunu belirtir. Örnek olarak SQLite, PostgreSQL, MySQL veya Oracle gibi veritabanı motorlarını seçebilirsiniz.
     
@@ -267,27 +274,44 @@ Django ORM, veritabanı işlemlerini Python nesneleri ve sorguları ile yönetme
 *   **Model Tanımlama:**  
     Django ORM'de veritabanı tablolarını Python sınıfları ile tanımlarsınız. Örnek bir model tanımı:
     
-*   `from django.db import models      class Author(models.Model):   name = models.CharField(max_length=100)   birth_date = models.DateField()   `
+```
+from django.db import models
+    class Author(models.Model):
+    name = models.CharField(max_length=100)
+    birth_date = models.DateField()
+```
     
 *   **Yeni Veri Ekleme:**  
     Yeni veri eklemek için modeli kullanabilirsiniz:
     
-*   `new_author = Author(name="J.K. Rowling", birth_date="1965-07-31")   new_author.save()   `
+```
+new_author = Author(name="J.K. Rowling",birth_date="1965-07-31")
+new_author.save()
+```
     
 *   **Veri Sorgulama:**  
     Veritabanından veri sorgulamak için Django ORM sorgularını kullanabilirsiniz:
     
-*   `authors = Author.objects.filter(name="J.K. Rowling")   `
+```
+authors = Author.objects.filter(name="J.K. Rowling")
+```
     
 *   **Veri Güncelleme:**  
     Veritabanındaki verileri güncellemek için modeli kullanabilirsiniz:
     
-*   `author = Author.objects.get(name="J.K. Rowling")   author.name = "Joanne Rowling"   author.save()   `
+```
+author = Author.objects.get(name="J.K. Rowling")
+author.name = "Joanne Rowling"
+author.save()
+```
     
 *   **Veri Silme:**  
     Verileri silmek için Django ORM'yi kullanabilirsiniz:
-    
-*   `author = Author.objects.get(name="Joanne Rowling")   author.delete()   `
+
+```
+author = Author.objects.get(name="Joanne Rowling")
+author.delete()
+``` 
     
 
 Django ORM, veritabanı işlemlerini Python nesneleri ve sorguları ile yapmanıza olanak tanır ve veritabanı bağlantısı için yapılandırma işlemlerini `settings.py` dosyası içinde kolayca yapabilirsiniz. Bu, veritabanı işlemlerini yönetmeyi daha kolay ve veritabanı bağlantısını esnek hale getirir.
@@ -310,7 +334,17 @@ Django'da URL yönlendirmeleri, gelen HTTP isteklerini doğru görünümlere yö
 
 Örnek bir `urls.py` dosyası:
 
-`from django.urls import path   from . import views      urlpatterns = [   path('', views.home, name='home'), # Anasayfa   path('about/', views.about, name='about'), # Hakkında sayfası   path('contact/', views.contact, name='contact'), # İletişim sayfası   ]`
+```
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),         # Anasayfa
+    path('about/', views.about, name='about'),  # Hakkında sayfası
+    path('contact/', views.contact, name='contact'),  # İletişim sayfası
+]
+
+```
 
 *   Yukarıdaki örnekte, her yol (URL) bir görünüm fonksiyonu ile ilişkilendirilir. Örneğin, boş bir yol (`''`) ana sayfayı temsil eder ve `home` adlı bir görünüm fonksiyonuna yönlendirilir.
     
@@ -321,7 +355,15 @@ Django'da URL yönlendirmeleri, parametreli yolları destekler. Bu, dinamik veri
 
 Örnek parametreli URL yönlendirmesi:
 
-`from django.urls import path   from . import views      urlpatterns = [   path('profile/<int:user_id>/', views.user_profile, name='user_profile'),   ]   `
+```
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('profile/<int:user_id>/', views.user_profile, name='user_profile'),
+]
+
+```
 
 *   Yukarıdaki örnekte, `<int:user_id>` ile tanımlanan kısım, bir kullanıcının kimlik numarasını belirtir. Bu, URL içindeki bir sayıyı yakalamak için kullanılır ve bu sayı, `user_profile` görünüm fonksiyonuna iletilir.
     
@@ -357,10 +399,13 @@ Yukarıdaki örnek, "home" adlı bir görünüm fonksiyonu tanımlar. Bu görün
     
 
 Örnek bir görünüm fonksiyonunda HTTP isteği ve cevabının kullanımı:
+```
+from django.http import HttpResponse
 
-`from django.http import HttpResponse`
-
-`    def greet_user(request, user_name):   response = HttpResponse("Merhaba, " + user_name)   return response    `
+def greet_user(request, user_name):
+    message = f"Merhaba, {user_name}"
+    return HttpResponse(message)
+```
 
 Yukarıdaki örnekte, "greet\_user" adlı bir görünüm fonksiyonu tanımlanmıştır. Bu görünüm, URL'den yakalanan `user_name` parametresini alır ve bu parametreyi kullanarak bir "Merhaba" yanıtı oluşturur. Oluşturulan yanıt, `HttpResponse` nesnesi ile döndürülür.
 
@@ -388,7 +433,29 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-`<!DOCTYPE html><html><head><title>{{ sayfa_basligi }}</title></head><body><h1>Merhaba, {{ kullanici_isim }}</h1>      {% if kullanici_girisli %}   <p>Kullanıcı giriş yapmış.</p>   {% else %}   <p>Kullanıcı giriş yapmamış.</p>   {% endif %}      <ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul></body></html>`
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ sayfa_basligi }}</title>
+</head>
+<body>
+    <h1>Merhaba, {{ kullanici_isim }}</h1>
+
+    {% if kullanici_girisli %}
+        <p>Kullanıcı giriş yapmış.</p>
+    {% else %}
+        <p>Kullanıcı giriş yapmamış.</p>
+    {% endif %}
+
+    <ul>
+        {% for sehir in sehirler %}
+            <li>{{ sehir }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+```
 
 Yukarıdaki örnekte, Django şablonları içinde değişkenler (`{{ sayfa_basligi }}`, `{{ kullanici_isim }}`), koşul ifadeleri (`{% if kullanici_girisli %}`), ve döngüler (`{% for sehir in sehirler %}`) kullanılmıştır.
 
@@ -400,7 +467,13 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-`<ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul>`
+```
+<ul>
+    {% for sehir in sehirler %}   
+        <li>{{ sehir }}</li>   
+    {% endfor %}
+</ul>
+```
 
 Yukarıdaki örnekte, `sehirler` adlı bir liste döngüsü ile dolaşılır ve her öğe için bir liste öğesi görüntülenir.
 
@@ -421,9 +494,27 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-`<!DOCTYPE html><html><head><title>{{ sayfa_basligi }}</title></head><body><h1>Merhaba, {{ kullanici_isim }}</h1>`
-
-`{% if kullanici_girisli %}   <p>Kullanıcı giriş yapmış.</p>   {% else %}   <p>Kullanıcı giriş yapmamış.</p>   {% endif %}      <ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul></body></html>`
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ sayfa_basligi }}</title>
+</head>
+<body>
+    <h1>Merhaba, {{ kullanici_isim }}</h1>
+    {% if kullanici_girisli %}
+        <p>Kullanıcı giriş yapmış.</p>
+    {% else %}
+        <p>Kullanıcı giriş yapmamış.</p>
+    {% endif %}
+    <ul>
+        {% for sehir in sehirler %}
+            <li>{{ sehir }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+```
 
 Yukarıdaki örnekte, Django şablonları içinde değişkenler (`{{ sayfa_basligi }}`, `{{ kullanici_isim }}`), koşul ifadeleri (`{% if kullanici_girisli %}`), ve döngüler (`{% for sehir in sehirler %}`) kullanılmıştır.
 
@@ -435,7 +526,13 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-`<ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul>`
+```
+<ul>   
+    {% for sehir in sehirler %}   
+        <li>{{ sehir }}</li>   
+    {% endfor %}   
+</ul>
+```
 
 Yukarıdaki örnekte, `sehirler` adlı bir liste döngüsü ile dolaşılır ve her öğe için bir liste öğesi görüntülenir.
 
@@ -454,15 +551,30 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-`<!DOCTYPE html>`
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ sayfa_basligi }}</title>
+</head>
+<body>
+    <h1>Merhaba, {{ kullanici_isim }}</h1>
 
-`<html><head><title>{{ sayfa_basligi }}</title></head>`
+    {% if kullanici_girisli %}
+        <p>Kullanıcı giriş yapmış.</p>
+    {% else %}
+        <p>Kullanıcı giriş yapmamış.</p>
+    {% endif %}
 
-`<body><h1>Merhaba, {{ kullanici_isim }}</h1>      {% if kullanici_girisli %}   <p>Kullanıcı giriş yapmış.</p>   {% else %}   <p>Kullanıcı giriş yapmamış.</p>   {% endif %}      <ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul>`
+    <ul>
+        {% for sehir in sehirler %}
+            <li>{{ sehir }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
 
-`</body>`
-
-`</html>`
+```
 
 Yukarıdaki örnekte, Django şablonları içinde değişkenler (`{{ sayfa_basligi }}`, `{{ kullanici_isim }}`), koşul ifadeleri (`{% if kullanici_girisli %}`), ve döngüler (`{% for sehir in sehirler %}`) kullanılmıştır.
 
@@ -474,7 +586,13 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-`<ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul>`
+```
+<ul>
+    {% for sehir in sehirler %}
+        <li>{{ sehir }}</li>
+    {% endfor %}
+</ul>
+```
 
 Yukarıdaki örnekte, `sehirler` adlı bir liste döngüsü ile dolaşılır ve her öğe için bir liste öğesi görüntülenir.
 
@@ -493,7 +611,30 @@ Django şablonları, HTML belgelerinin içine eklenen özel etiketler ve ifadele
 
 Örnek bir Django şablonu:
 
-`<!DOCTYPE html><html><head><title>{{ sayfa_basligi }}</title></head><body><h1>Merhaba, {{ kullanici_isim }}</h1>      {% if kullanici_girisli %}   <p>Kullanıcı giriş yapmış.</p>   {% else %}   <p>Kullanıcı giriş yapmamış.</p>   {% endif %}      <ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul></body></html>`
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ sayfa_basligi }}</title>
+</head>
+<body>
+    <h1>Merhaba, {{ kullanici_isim }}</h1>
+    
+    {% if kullanici_girisli %}
+        <p>Kullanıcı giriş yapmış.</p>
+    {% else %}
+        <p>Kullanıcı giriş yapmamış.</p>
+    {% endif %}
+    
+    <ul>
+        {% for sehir in sehirler %}
+            <li>{{ sehir }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+```
 
 Yukarıdaki örnekte, Django şablonları içinde değişkenler (`{{ sayfa_basligi }}`, `{{ kullanici_isim }}`), koşul ifadeleri (`{% if kullanici_girisli %}`), ve döngüler (`{% for sehir in sehirler %}`) kullanılmıştır.
 
@@ -505,7 +646,13 @@ Döngüler, listedeki veya sorgudan dönen verileri şablonda görüntülemek i�
 
 Örnek bir şablon değişkeni ve döngüsü:
 
-`<ul>   {% for sehir in sehirler %}   <li>{{ sehir }}</li>   {% endfor %}   </ul>`
+```
+<ul>   
+    {% for sehir in sehirler %}   
+        <li>{{ sehir }}</li>   
+    {% endfor %}   
+</ul>
+```
 
 Yukarıdaki örnekte, `sehirler` adlı bir liste döngüsü ile dolaşılır ve her öğe için bir liste öğesi görüntülenir.
 
@@ -524,7 +671,7 @@ Django admin paneli, veritabanı yönetimi ve web uygulamanızın yönetimi içi
 
 Django admin paneline erişmek için önce bir süper kullanıcı hesabı oluşturmanız gerekmektedir. Süper kullanıcı hesabı oluşturmak için aşağıdaki komutu kullanabilirsiniz
 
-`python manage.py createsuperuser   `
+`python manage.py createsuperuser `
 
 Bu komut çalıştırıldığında, kullanıcı adı, e-posta adresi ve şifre gibi bilgileri girmeniz istenecektir. Süper kullanıcı hesabı oluşturulduktan sonra, admin paneline erişmek için `/admin/` yolunu kullanabilirsiniz. Kullanıcı adı ve şifre ile giriş yapabilirsiniz.
 
@@ -554,7 +701,22 @@ Django admin panelini özelleştirmek için aşağıdaki yöntemleri kullanabili
 
 Örnek `admin.py` dosyası özelleştirmeleri:
 
-`from django.contrib import admin   from .models import MyModel      class MyModelAdmin(admin.ModelAdmin):   list_display = ('field1', 'field2', 'field3')   list_filter = ('field1', 'field2')   search_fields = ('field1', 'field2')      admin.site.register(MyModel, MyModelAdmin)   admin.site.site_header = 'Özel Admin Paneli Başlığı'   admin.site.site_title = 'Admin Paneli'   admin.site.index_title = 'Ana Sayfa'`
+```
+from django.contrib import admin
+from .models import MyModel
+
+class MyModelAdmin(admin.ModelAdmin):
+    list_display = ('field1', 'field2', 'field3')
+    list_filter = ('field1', 'field2')
+    search_fields = ('field1', 'field2')  # Buraya uygun alanları ekleyin
+
+admin.site.register(MyModel, MyModelAdmin)
+admin.site.site_header = 'Özel Admin Paneli Başlığı'
+admin.site.site_title = 'Admin Paneli'
+admin.site.index_title = 'Ana Sayfa'
+fa'
+
+````
 
 Bu özelleştirmeler, admin panelinin görünümünü ve işlevselliğini projenize göre ayarlamanıza olanak tanır.
 
